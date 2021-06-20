@@ -1,0 +1,9 @@
+<% 
+const componentName = args.name.split("/").pop(); 
+const componentsDir = (args.components || "src/components");
+-%>
+---
+to: "<%= componentsDir%>/<%=args.name %>/index.js"
+overwrite: true
+---
+export { default } from "./<%=componentName %>.js";

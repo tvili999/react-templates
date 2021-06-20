@@ -1,0 +1,16 @@
+<% 
+const componentsDir = (args.components || "src/components");
+%>
+---
+to: <%=componentsDir%>/App.js
+overwrite: true
+---
+import React from "react";
+
+import "./App.styl";
+
+const App = () => (
+    <p>TestApp</p>
+);
+
+export default App;

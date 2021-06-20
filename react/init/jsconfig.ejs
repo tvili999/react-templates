@@ -1,0 +1,26 @@
+<% 
+const componentsDir = (args.components || "src/components");
+const contextsDir = (args.contexts || "src/contexts");
+const aliases = args.aliases || {
+    "core": "src/core",
+    "components": componentsDir,
+    "contexts": contextsDir
+}
+-%>
+---
+to: jsconfig.json
+overwrite: true
+---
+{
+	"compilerOptions": {
+		"module": "es6",
+		"target": "es2015",
+		"baseUrl": "./",
+		"paths": {
+		<%_ for(let name in aliases) { -%>
+			"<%=name + "/*" %>": ["<%= aliases[name] + "/*"%>"],
+		<%_ } -%>
+		}
+	},
+	"exclude": ["node_modules"]
+}

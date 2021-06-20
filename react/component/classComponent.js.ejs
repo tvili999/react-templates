@@ -1,6 +1,9 @@
-<% const componentName = args.name.split("/").pop(); -%>
+<% 
+const componentName = args.name.split("/").pop(); 
+const componentsDir = (args.components || "src/components");
+-%>
 ---
-to: "src/components/<%=args.name %>/<%=componentName %>.js"
+to: "<%= componentsDir%>/<%=args.name %>/<%=componentName %>.js"
 overwrite: true
 ---
 import React, { Component } from "react";

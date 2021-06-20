@@ -1,0 +1,53 @@
+<%
+const path = require("path");
+const fs = require("fs");
+const childProcess = require("child_process");
+
+const packageJsonPath = path.resolve(projectRoot, "package.json");
+let packageJson = {
+    "name": path.dirname(projectRoot),
+    "version": "1.0.0",
+    "license": "MIT"
+};
+if(fs.existsSync(packageJsonPath))
+    packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
+
+packageJson.scripts = {
+    ...(packageJson.scripts || {}),
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "build:watch": "webpack -w"
+}
+
+addHook("afterCreate", () => {
+    const devDeps = [
+        "@babel/core",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "babel-loader",
+        "circular-dependency-plugin",
+        "css-loader",
+        "file-loader",
+        "html-webpack-plugin",
+        "mini-css-extract-plugin",
+        "raw-loader",
+        "stylus",
+        "stylus-loader",
+        "url-loader",
+        "webpack",
+        "webpack-cli",
+        "webpack-dev-server",
+        "webpack-visualizer-plugin"
+    ];
+
+    childProcess.exec("yarn && yarn add react react-dom react-router-dom && yarn add --dev " + devDeps.join(" "));
+})
+%>
+---
+to: package.json
+overwrite: true
+---
+<%- JSON.stringify(packageJson, null, 4) %>

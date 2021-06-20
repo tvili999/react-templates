@@ -1,0 +1,17 @@
+<% 
+const componentsDir = (args.components || "src/components");
+%>
+---
+to: <%=componentsDir%>/App.styl
+overwrite: true
+---
+*
+    font-family: 'sans-serif'
+    user-select: none
+    pointer: default
+
+a
+    text-decoration none
+
+p
+    margin 0
