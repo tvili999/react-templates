@@ -3,10 +3,17 @@ to: .vscode/settings.json
 overwrite: true
 ---
 {
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": ["javascript"],
     "files.exclude": {
         "**/node_modules": true,
         "**/build": true,
         "**/.babelrc": true,
+        "**/.eslintrc": true,
+        "**/postcss.config.js": true,
+        "**/gen.config.json": true,
         "**/jsconfig.json": true,
         "**/yarn.lock": true,
         "**/.gitignore": true,

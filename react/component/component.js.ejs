@@ -1,0 +1,5 @@
+<% if(args.type === "class") { %>
+    <%- include("classComponent.js.ejs", { args });%>
+<% } else {%>
+    <%- include("funcComponent.js.ejs", { args });%>
+<% }%>

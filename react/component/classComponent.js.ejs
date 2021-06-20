@@ -1,6 +1,7 @@
 <% 
 const componentName = args.name.split("/").pop(); 
 const componentsDir = (args.components || "src/components");
+console.log(componentName);
 -%>
 ---
 to: "<%= componentsDir%>/<%=args.name %>/<%=componentName %>.js"
