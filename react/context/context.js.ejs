@@ -27,12 +27,12 @@ const with<%=componentName %> = Component => {
         <Consumer>
             {value => <Component <%=componentName.toLowerCase() %>={value} {...props} />}
         </Consumer>
-    )
+    );
 
     hoc.displayName = "with<%=componentName %>()";
 
     return hoc;
-}
+};
 
 export { <%=componentName %>Provider, with<%=componentName %> };
 export const <%=componentName %>Consumer = Consumer;

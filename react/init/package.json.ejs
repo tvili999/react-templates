@@ -30,18 +30,20 @@ packageJson.dependencies = {
 
 packageJson.devDependencies = {
     ...(packageJson.devDependencies || {}),
+    ...(args.eslint ? {
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.29.0",
+        "eslint-plugin-react": "^7.24.0",
+    } : {}),
     "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-decorators": "^7.14.5",
     "@babel/plugin-proposal-do-expressions": "^7.14.5",
     "@babel/plugin-proposal-pipeline-operator": "^7.14.5",
     "@babel/preset-env": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
-    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "circular-dependency-plugin": "^5.2.2",
     "css-loader": "^5.2.6",
-    "eslint": "^7.29.0",
-    "eslint-plugin-react": "^7.24.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",

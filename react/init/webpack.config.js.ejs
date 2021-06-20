@@ -65,6 +65,7 @@ module.exports = env => ({
                     "postcss-loader",
                 ]
             },
+            <%_ if(args.cssModules) { -%>
             {
                 test: /\.styl$/,
                 resourceQuery: { not: [/no-modules/] },
@@ -81,9 +82,12 @@ module.exports = env => ({
                     'stylus-loader'
                 ]
             },
+            <%_ } -%>
             {
                 test: /\.styl$/,
+                <%_ if(args.cssModules) { -%>
                 resourceQuery: /no-modules/,
+                <%_ } -%>
                 use: [
                     MiniCSSExtractPlugin.loader,
                     {
