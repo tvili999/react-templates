@@ -1,5 +1,5 @@
-<% if(args.type === "class") { %>
-    <%- include("classComponent.js.ejs", { args });%>
-<% } else {%>
-    <%- include("funcComponent.js.ejs", { args });%>
-<% }%>
+<%_ if(args.type === "class") { -%>
+<%- await include("classComponent.js.ejs", { args });%>
+<%_ } else { -%>
+<%- await include("funcComponent.js.ejs", { args });%>
+<%_ } -%>

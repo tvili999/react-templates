@@ -26,7 +26,8 @@ module.exports = env => ({
     output: {
         path: path.join(__dirname, 'dist'),
         filename: env.dev ? '[name].js' : '[name].[contenthash].js',
-        clean: true
+        clean: true,
+        publicPath: "/"
     },
     resolve: {
         extensions: [".js", ".jsx"],
@@ -40,6 +41,7 @@ module.exports = env => ({
     devtool: env.dev ? "eval" : "source-map",
     devServer: {
         host: "0.0.0.0",
+        historyApiFallback: true,
         contentBase: path.resolve(__dirname, "dist"),
         port: 8080
     },

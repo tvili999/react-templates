@@ -1,10 +1,11 @@
 <% 
-const componentName = args.name.split("/").pop(); 
+const path = require("path")
+const componentName = path.basename(args.name); 
 const componentsDir = (args.components || "src/components");
-console.log(componentName);
+const filePath = path.join(componentsDir, args.name, componentName + '.js');
 -%>
 ---
-to: "<%= componentsDir%>/<%=args.name %>/<%=componentName %>.js"
+to: "<%= filePath %>"
 overwrite: true
 ---
 import React, { Component } from "react";
