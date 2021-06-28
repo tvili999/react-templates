@@ -3,15 +3,20 @@ const path = require("path")
 const componentName = path.basename(args.name); 
 const componentsDir = (args.components || "src/components");
 const filePath = path.join(componentsDir, args.name, componentName + '.js');
+const exportName = (args.library && args.style) ? `Styled${componentName}` : componentName;
 -%>
 ---
 to: "<%= filePath %>"
 overwrite: true
 ---
 import React, { Component } from "react";
-
+<%_ if(args.library && args.style) { -%>
+import styled from "styled-components";
+<%_ } if(!args.library) { -%>
+    
 import "./<%=componentName %>.styl";
-
+<%_ } -%>
+    
 class <%=componentName %> extends Component {
     <%_ if(args.fetchFn) { -%>
     componentDidMount() {
@@ -35,4 +40,10 @@ class <%=componentName %> extends Component {
     }
 }
 
-export default <%=componentName %>;
+<%_ if(args.library && args.style) { -%>
+const Styled<%=componentName%> = styled(<%=componentName %>)`
+
+`;
+<%_ } -%>
+
+export default <%=exportName %>;

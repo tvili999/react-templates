@@ -1,0 +1,22 @@
+<%
+const path = require("path");
+const fs = require("fs");
+
+const configPath = path.resolve(projectRoot, "gen.config.json");
+let config = {};
+if(fs.existsSync(configPath))
+    config = JSON.parse(fs.readFileSync(configPath));
+
+config["react-templates"] = {
+    ...(config["react-templates"] || {}),
+    "contexts": "src",
+    "components": "src",
+    "library": true
+};
+
+%>
+---
+to: gen.config.json
+overwrite: true
+---
+<%- JSON.stringify(config, null, 4) %>
