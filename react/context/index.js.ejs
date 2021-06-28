@@ -6,5 +6,5 @@ const contextsDir = (args.contexts || "src/contexts");
 to: "<%=contextsDir %>/<%=args.name %>/index.js"
 overwrite: true
 ---
-export { <%=componentName %>Provider, <%=componentName %>Consumer, with<%=componentName %> };
+export { <%=componentName %>Provider, <%=componentName %>Consumer, with<%=componentName %> } from "./<%= componentName%>.js";
 
