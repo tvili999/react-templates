@@ -33,6 +33,7 @@ module.exports = env => ({
         extensions: [".js", ".jsx"],
         modules: ["node_modules", "src"],
         alias: {
+            "react": path.resolve(__dirname, "node_modules/react"), // Force yarn linked packages to use react object from this project
         <%_ for(let name in aliases) { -%>
             "<%=name %>": path.resolve(__dirname, "<%= aliases[name]%>"),
         <%_ } -%>
