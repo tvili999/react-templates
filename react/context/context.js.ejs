@@ -8,9 +8,14 @@ overwrite: true
 ---
 import React, { Component } from "react";
 
+import propTypes from "./<%=componentName %>.props.js";
+import { createHoc } from "react-utils/utils";
+
 const { Provider, Consumer } = React.createContext();
 
 class <%=componentName %>Provider extends Component {
+    static propTypes = propTypes;
+
     state = {
 
     }
@@ -22,17 +27,7 @@ class <%=componentName %>Provider extends Component {
     );
 }
 
-const with<%=componentName %> = Component => {
-    const hoc = (props) => (
-        <Consumer>
-            {value => <Component <%=componentName.toLowerCase() %>={value} {...props} />}
-        </Consumer>
-    );
-
-    hoc.displayName = "with<%=componentName %>()";
-
-    return hoc;
-};
+const with<%=componentName %> = createHoc(Consumer, "<%=componentName.toLowerCase() %>");
 
 export { <%=componentName %>Provider, with<%=componentName %> };
 export const <%=componentName %>Consumer = Consumer;

@@ -1,0 +1,13 @@
+<% 
+const componentName = args.name.split("/").pop(); 
+const contextsDir = (args.contexts || "src/contexts");
+-%>
+---
+to: "<%=contextsDir %>/<%=args.name %>/<%=componentName %>.props.js"
+overwrite: true
+---
+import PropTypes from "prop-types";
+
+export default {
+    children: PropTypes.node
+};

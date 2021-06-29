@@ -1,4 +1,3 @@
-<%_ if(args.eslint) { -%>
 ---
 to: .eslintrc
 overwrite: true
@@ -16,9 +15,10 @@ overwrite: true
         }
     },
     "env": {
-        "es6":     true,
+        "es6": true,
         "browser": true,
-        "node":    true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
@@ -36,4 +36,3 @@ overwrite: true
       }
     }
 }
-<%_ } -%>

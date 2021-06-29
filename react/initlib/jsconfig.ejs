@@ -1,0 +1,27 @@
+<% 
+const path = require("path");
+const fs = require("fs");
+const packageJsonPath = path.resolve(projectRoot, "package.json");
+let packageJson = {
+    "name": path.dirname(projectRoot),
+    "version": "1.0.0",
+    "license": "MIT"
+};
+if(fs.existsSync(packageJsonPath))
+    packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
+-%>
+---
+to: jsconfig.json
+overwrite: true
+---
+{
+	"compilerOptions": {
+		"module": "es6",
+		"target": "es2015",
+		"baseUrl": "./",
+		"paths": {
+			"<%= packageJson.name %>/*": ["src/*"]
+		}
+	},
+	"exclude": ["node_modules"]
+}

@@ -1,3 +1,15 @@
+<% 
+const path = require("path");
+const fs = require("fs");
+const packageJsonPath = path.resolve(projectRoot, "package.json");
+let packageJson = {
+    "name": path.dirname(projectRoot),
+    "version": "1.0.0",
+    "license": "MIT"
+};
+if(fs.existsSync(packageJsonPath))
+    packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
+-%>
 ---
 to: .babelrc
 overwrite: true
@@ -8,6 +20,12 @@ overwrite: true
         "@babel/preset-react"
     ],
     "plugins": [
+        ["babel-plugin-module-resolver", {
+            "root": "./",
+            "alias": {
+                "<%=packageJson.name %>": "./src"
+            }
+        }],
         ["@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true }],
         "@babel/plugin-proposal-do-expressions",
         ["@babel/plugin-proposal-pipeline-operator", { "proposal": "smart" }],

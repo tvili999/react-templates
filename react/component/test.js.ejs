@@ -1,0 +1,15 @@
+<% 
+const path = require("path")
+const componentName = path.basename(args.name); 
+const componentsDir = (args.components || "src/components");
+const filePath = path.join(componentsDir, args.name, componentName + '.test.js');
+-%>
+---
+to: "<%= filePath %>"
+overwrite: true
+---
+import TestRenderer from 'react-test-renderer';
+
+test('passes', () => {
+
+});

@@ -12,12 +12,16 @@ overwrite: true
 import React, { Component } from "react";
 <%_ if(args.library && args.style) { -%>
 import styled from "styled-components";
-<%_ } if(!args.library) { -%>
-    
+<%_ } -%>
+
+import propTypes from "./<%=componentName %>.props.js";
+<%_ if(!args.library) { -%>
 import "./<%=componentName %>.styl";
 <%_ } -%>
     
 class <%=componentName %> extends Component {
+    static propTypes = propTypes;
+
     <%_ if(args.fetchFn) { -%>
     componentDidMount() {
         this.fetch();

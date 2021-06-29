@@ -1,3 +1,5 @@
 index.js.ejs
 style.styl.ejs
 component.js.ejs
+props.js.ejs
+test.js.ejs

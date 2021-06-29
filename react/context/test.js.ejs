@@ -1,0 +1,13 @@
+<% 
+const componentName = args.name.split("/").pop(); 
+const contextsDir = (args.contexts || "src/contexts");
+-%>
+---
+to: "<%=contextsDir %>/<%=args.name %>/<%=componentName %>.test.js"
+overwrite: true
+---
+import TestRenderer from 'react-test-renderer';
+
+test('passes', () => {
+
+});

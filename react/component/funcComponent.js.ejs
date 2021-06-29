@@ -12,14 +12,18 @@ overwrite: true
 import React from "react";
 <%_ if(args.library && args.style) { -%>
 import styled from "styled-components";
-<%_ } if(!args.library) { -%>
-    
+<%_ } -%>
+
+import propTypes from "./<%=componentName %>.props.js";
+<%_ if(!args.library) { -%>
 import "./<%=componentName %>.styl";
 <%_ } -%>
 
 const <%=componentName %> = () => (
     null
 );
+
+<%=componentName %>.propTypes = propTypes;
 
 <%_ if(args.library && args.style) { -%>
 const Styled<%=componentName%> = styled(<%=componentName %>)`
