@@ -8,7 +8,9 @@ const filePath = path.join(componentsDir, args.name, componentName + '.test.js')
 to: "<%= filePath %>"
 overwrite: true
 ---
+import React from "react";
 import TestRenderer from 'react-test-renderer';
+import <%=componentName %> from "./<%= componentName%>.js";
 
 test('passes', () => {
 

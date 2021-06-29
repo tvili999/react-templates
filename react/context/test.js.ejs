@@ -6,7 +6,9 @@ const contextsDir = (args.contexts || "src/contexts");
 to: "<%=contextsDir %>/<%=args.name %>/<%=componentName %>.test.js"
 overwrite: true
 ---
+import React from "react";
 import TestRenderer from 'react-test-renderer';
+import { <%=componentName %>Provider } from "./<%= componentName %>.js";
 
 test('passes', () => {
 
