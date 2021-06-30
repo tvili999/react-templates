@@ -7,8 +7,16 @@ to: "<%=contextsDir %>/<%=args.name %>/<%=componentName %>.test.js"
 overwrite: true
 ---
 import React from "react";
-import TestRenderer from 'react-test-renderer';
-import { <%=componentName %>Provider } from "./<%= componentName %>.js";
+import tester from "react-utils/tester";
+import { <%=componentName %>Provider, <%=componentName %>Consumer } from "./<%= componentName %>.js";
+
+const buildContext = () => tester(Tester => (
+    <<%=componentName %>Provider>
+        <<%=componentName %>Consumer>
+            { value => <Tester value={value}/> }
+        </<%=componentName %>Consumer>
+    </<%=componentName %>Provider>
+));
 
 test('passes', () => {
 
